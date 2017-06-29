@@ -107,8 +107,8 @@
 - (void)resetDice {
     self.heldDices = [@[@(NO), @(NO), @(NO), @(NO), @(NO)] mutableCopy];
     // Reroll all dices to reset game
+    self.requiredHoldCounter = 0; //Allow reset without holds
     [self rollDices];
-    self.requiredHoldCounter = 1; //Reset required holds again
 }
 
 // Calculate total score based on dices (III are 0s)
@@ -129,6 +129,15 @@
 //Reset high score
 - (void) resetScoreToBeat {
     self.scoreToBeat = 30;
+    [self resetDice];
+}
+
+- (void) secretWinGameCheat {
+    //Set all dies to III
+    for (Dice* die in self.dices) {
+        die.display = @"⚂ - III";
+        die.value = 0;
+    }
 }
 
 @end

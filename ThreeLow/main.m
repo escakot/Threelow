@@ -20,11 +20,16 @@ int main(int argc, const char * argv[]) {
             [gameController displayDices];
             [gameController gameOptions];
             [gameController calcScore];
+            
+            //Obtain string input
             NSString* inputString = [InputHandler obtainInput];
+            
+            //Reroll unheld dice
             if ([inputString isEqualToString:@"roll"]){
                 [gameController rollDices];
             }
             
+            //Hold dice at index #
             if ([inputString hasPrefix:@"hold"]){
                 NSInteger diceNumber = [inputString substringFromIndex:(inputString.length - 1)].integerValue;
                 if (diceNumber < 5) {
@@ -33,19 +38,26 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"Dice index does not exist.");
                 }
             }
-            
+           
+            //Reset game
             if ([inputString hasPrefix:@"reset"]){
                 [gameController resetDice];
             }
             
+            //Reset highscore
             if ([inputString hasPrefix:@"new game"]){
                 [gameController resetScoreToBeat];
             }
             
-            
+            //Quit game
             if ([inputString isEqualToString:@"quit"]){
                 playGame = NO;
                 NSLog(@"Game ended");
+            }
+            
+            //Secret win game cheat
+            if ([inputString isEqualToString:@"rolll"]){
+                [gameController secretWinGameCheat];
             }
             
         }while(playGame);

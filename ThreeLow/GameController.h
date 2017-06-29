@@ -18,17 +18,12 @@
 @property (nonatomic) NSInteger scoreToBeat;
 
 - (void) gameOptions;
-
 - (void) displayDices;
-
 - (void) rollDices;
-
 - (void) holdDie:(NSInteger)diceNumber;
-
 - (void) resetDice;
-
 - (void) calcScore;
-
 - (void) resetScoreToBeat;
+- (void) secretWinGameCheat;
 
 @end
