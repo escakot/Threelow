@@ -15,6 +15,7 @@
 @property (nonatomic) NSMutableArray* heldDices;
 @property (nonatomic) NSInteger requiredHoldCounter;
 @property (nonatomic) NSInteger currentHoldCounter;
+@property (nonatomic) NSInteger scoreToBeat;
 
 - (void) gameOptions;
 

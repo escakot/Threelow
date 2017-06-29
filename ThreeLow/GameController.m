@@ -14,6 +14,7 @@
 {
     self = [super init];
     if (self) {
+        _scoreToBeat = 30;
         _requiredHoldCounter = 1;
         _currentHoldCounter = 0;
         Dice *firstDice = [[Dice alloc] init];
@@ -92,7 +93,10 @@
     for (Dice* die in self.dices) {
         totalScore = totalScore + die.value;
     }
-    NSLog(@"\nTotal score:%li\n", totalScore);
+    if (self.scoreToBeat > totalScore) {
+        self.scoreToBeat = totalScore;
+    }
+    NSLog(@"\nTotal score:%li, Score to beat:%li\n", totalScore, self.scoreToBeat);
 }
 
 @end
