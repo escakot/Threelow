@@ -23,22 +23,28 @@
     int rollDice = arc4random_uniform(6);
     switch (rollDice) {
         case 0:
-            self.value = @"⚀ - I";
+            self.display = @"⚀ - I";
+            self.value = 1;
             break;
         case 1:
-            self.value = @"⚁ - II";
+            self.display = @"⚁ - II";
+            self.value = 2;
             break;
         case 2:
-            self.value = @"⚂ - III";
+            self.display = @"⚂ - III";
+            self.value = 3;
             break;
         case 3:
-            self.value = @"⚃ - IV";
+            self.display = @"⚃ - IV";
+            self.value = 4;
             break;
         case 4:
-            self.value = @"⚄ - V";
+            self.display = @"⚄ - V";
+            self.value = 5;
             break;
         case 5:
-            self.value = @"⚅ - VI";
+            self.display = @"⚅ - VI";
+            self.value = 6;
             break;
             
     }

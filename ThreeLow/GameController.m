@@ -27,22 +27,21 @@
 
 - (void) gameOptions {
     NSLog(@"\n"
-          "roll - Rolls unheld dices\n"
-          "hold # - Holds dices at index #\n"
+          "roll - Rolls unheld dice\n"
+          "hold # - Hold/Unhold die at index #\n"
+          "reset - Unholds all dice\n"
           "quit - Quits game\n");
 }
 
 - (void) displayDices {
     NSMutableString *concatString = [[NSMutableString alloc] initWithString:@"\n"];
-    __block NSString* diceStatus;
     [self.dices enumerateObjectsUsingBlock:^(Dice*  _Nonnull diceNumber, NSUInteger idx, BOOL * _Nonnull stop) {
         NSNumber* heldBool = self.heldDices[idx];
         if (heldBool.boolValue){
-            diceStatus = [NSString stringWithFormat:@"[%@]",diceNumber.value];
+            [concatString appendString:[NSString stringWithFormat:@"[%@]",diceNumber.display]];
         } else {
-            diceStatus = diceNumber.value;
+            [concatString appendString:diceNumber.display ];
         }
-        [concatString appendString:diceStatus];
         [concatString appendString:@"\n"];
     }];
     NSLog(@"%@", concatString);
@@ -54,6 +53,14 @@
     } else {
         self.heldDices[diceNumber] = @(YES);
     }
+}
+
+- (void)resetDice {
+    self.heldDices = [@[@(NO), @(NO), @(NO), @(NO), @(NO)] mutableCopy];
+}
+
+- (void) calcScore {
+    
 }
 
 @end

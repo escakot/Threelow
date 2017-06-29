@@ -29,9 +29,8 @@ int main(int argc, const char * argv[]) {
                 [gameController holdDie:diceNumber];
             }
             
-            if ([inputString hasPrefix:@"unhold"]){
-                NSInteger diceNumber = [inputString substringFromIndex:(inputString.length - 1)].integerValue;
-                [gameController holdDie:diceNumber];
+            if ([inputString hasPrefix:@"reset"]){
+                [gameController resetDice];
             }
             
             if ([inputString isEqualToString:@"quit"]){

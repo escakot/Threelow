@@ -10,7 +10,8 @@
 
 @interface Dice : NSObject
 
-@property (nonatomic) NSString* value;
+@property (nonatomic) NSString* display;
+@property (nonatomic) NSInteger value;
 
 - (void) roll;
 

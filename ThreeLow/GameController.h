@@ -20,4 +20,8 @@
 
 - (void) holdDie:(NSInteger)diceNumber;
 
+- (void) resetDice;
+
+- (void) calcScore;
+
 @end
