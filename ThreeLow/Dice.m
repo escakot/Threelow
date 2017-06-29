@@ -19,6 +19,7 @@
     return self;
 }
 
+//Randomize roll and set NSString display & value for score calculation
 - (void)roll {
     int rollDice = arc4random_uniform(6);
     switch (rollDice) {

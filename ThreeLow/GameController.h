@@ -29,4 +29,6 @@
 
 - (void) calcScore;
 
+- (void) resetScoreToBeat;
+
 @end

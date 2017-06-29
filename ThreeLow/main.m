@@ -38,6 +38,11 @@ int main(int argc, const char * argv[]) {
                 [gameController resetDice];
             }
             
+            if ([inputString hasPrefix:@"new game"]){
+                [gameController resetScoreToBeat];
+            }
+            
+            
             if ([inputString isEqualToString:@"quit"]){
                 playGame = NO;
                 NSLog(@"Game ended");

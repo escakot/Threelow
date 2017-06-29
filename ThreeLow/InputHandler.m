@@ -22,8 +22,9 @@
         _cleanString = [inputString stringByTrimmingCharactersInSet:newLineChar];
     }
     return self;
-}
+}/
 
+//Class method to obtain string input and remove newline char
 + (NSString *)obtainInput {
         char inputChar[255];
         
