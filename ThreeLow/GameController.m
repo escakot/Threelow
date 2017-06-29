@@ -27,6 +27,7 @@
 
 - (void) gameOptions {
     NSLog(@"\n"
+          "Threelow Game Options:\n"
           "roll - Rolls unheld dice\n"
           "hold # - Hold/Unhold die at index #\n"
           "reset - Unholds all dice\n"
@@ -60,7 +61,11 @@
 }
 
 - (void) calcScore {
-    
+    NSInteger totalScore = 0;
+    for (Dice* die in self.dices) {
+        totalScore = totalScore + die.value;
+    }
+    NSLog(@"\nTotal score:%li\n", totalScore);
 }
 
 @end

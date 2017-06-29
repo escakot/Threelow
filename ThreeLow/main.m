@@ -19,6 +19,7 @@ int main(int argc, const char * argv[]) {
         do {
             [gameController displayDices];
             [gameController gameOptions];
+            [gameController calcScore];
             NSString* inputString = [InputHandler obtainInput];
             if ([inputString isEqualToString:@"roll"]){
                 

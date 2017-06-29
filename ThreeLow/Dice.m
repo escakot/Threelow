@@ -32,7 +32,7 @@
             break;
         case 2:
             self.display = @"⚂ - III";
-            self.value = 3;
+            self.value = 0;
             break;
         case 3:
             self.display = @"⚃ - IV";
