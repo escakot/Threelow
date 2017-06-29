@@ -22,12 +22,16 @@ int main(int argc, const char * argv[]) {
             [gameController calcScore];
             NSString* inputString = [InputHandler obtainInput];
             if ([inputString isEqualToString:@"roll"]){
-                
+                [gameController rollDices];
             }
             
             if ([inputString hasPrefix:@"hold"]){
                 NSInteger diceNumber = [inputString substringFromIndex:(inputString.length - 1)].integerValue;
-                [gameController holdDie:diceNumber];
+                if (diceNumber < 5) {
+                    [gameController holdDie:diceNumber];
+                } else {
+                    NSLog(@"Dice index does not exist.");
+                }
             }
             
             if ([inputString hasPrefix:@"reset"]){

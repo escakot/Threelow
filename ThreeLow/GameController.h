@@ -13,10 +13,14 @@
 
 @property (nonatomic) NSMutableArray* dices;
 @property (nonatomic) NSMutableArray* heldDices;
+@property (nonatomic) NSInteger requiredHoldCounter;
+@property (nonatomic) NSInteger currentHoldCounter;
 
 - (void) gameOptions;
 
 - (void) displayDices;
+
+- (void) rollDices;
 
 - (void) holdDie:(NSInteger)diceNumber;
 

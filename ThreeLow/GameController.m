@@ -14,6 +14,8 @@
 {
     self = [super init];
     if (self) {
+        _requiredHoldCounter = 1;
+        _currentHoldCounter = 0;
         Dice *firstDice = [[Dice alloc] init];
         Dice *secondDice = [[Dice alloc] init];
         Dice *thirdDice = [[Dice alloc] init];
@@ -36,16 +38,40 @@
 
 - (void) displayDices {
     NSMutableString *concatString = [[NSMutableString alloc] initWithString:@"\n"];
+    self.currentHoldCounter = 0;
     [self.dices enumerateObjectsUsingBlock:^(Dice*  _Nonnull diceNumber, NSUInteger idx, BOOL * _Nonnull stop) {
         NSNumber* heldBool = self.heldDices[idx];
         if (heldBool.boolValue){
             [concatString appendString:[NSString stringWithFormat:@"[%@]",diceNumber.display]];
+            self.currentHoldCounter++;
         } else {
-            [concatString appendString:diceNumber.display ];
+            [concatString appendString:diceNumber.display];
         }
         [concatString appendString:@"\n"];
     }];
     NSLog(@"%@", concatString);
+}
+
+- (void)rollDices {
+    if (self.requiredHoldCounter <= self.currentHoldCounter) {
+        [self.dices enumerateObjectsUsingBlock:^(Dice*  _Nonnull diceNumber, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSNumber* heldBool = self.heldDices[idx];
+            if (!heldBool.boolValue){
+                [diceNumber roll];
+            }
+        }];
+        if (self.currentHoldCounter > self.requiredHoldCounter) {
+            self.requiredHoldCounter = self.currentHoldCounter;
+        }
+        self.requiredHoldCounter++;
+    } else if (self.requiredHoldCounter == 5) {
+        NSLog(@"Max number of rolls. Please reset");
+        sleep(1.5);
+    } else {
+        NSLog(@"You need to hold at least %lu dice.", self.requiredHoldCounter);
+        sleep(1.5);
+    }
+    
 }
 
 - (void) holdDie:(NSInteger)diceNumber {
@@ -58,6 +84,7 @@
 
 - (void)resetDice {
     self.heldDices = [@[@(NO), @(NO), @(NO), @(NO), @(NO)] mutableCopy];
+    self.requiredHoldCounter = 0;
 }
 
 - (void) calcScore {
